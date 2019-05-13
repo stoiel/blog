@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export $(cat .env.docker | grep -v "^#" | xargs) && docker-compose up -d --build
