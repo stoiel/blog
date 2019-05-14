@@ -46,8 +46,9 @@ services:
       - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
       env_file:
       - ./.env.docker
-      ports:
-      - 9001:9001
+      expose:
+      - 9000
+      - 9001
       environment:
          TIMEZONE: Asia/Tokyo
          LANGUAGE: "Japanese"
