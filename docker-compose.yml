@@ -5,7 +5,7 @@ services:
       depends_on:
       - php
       volumes:
-      - document-volume:/usr/share/nginx/html
+      - document-volume:/var/www/app
       - phpfpm-socket:/var/run
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -17,7 +17,7 @@ services:
       - 443:443
       networks:
       - app-network
-      command: /bin/sh -c "nginx -g 'daemon off;' "
+      command: /bin/sh -c "apt-get update; apt-get install -y vim; nginx -g 'daemon off;' "
 
    db:
       image: mariadb:10.4

@@ -42,3 +42,6 @@ COPY ./.bashrc ~/.bashrc
 
 # php-fpm initialization
 USER root
+
+RUN mkdir -p /var/www/app/web/core/
+RUN chmod -R 755 /var/www/app/web/core/

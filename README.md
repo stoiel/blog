@@ -9,8 +9,12 @@ $ cp .env.example .env
 $ cp .env.docker.example .env.docker
 ```
 
-ターミナルで下記を実行します。
+事前に`.env.docker`を展開しておきます。
+```bash
+$ export $(cat .env.docker | grep -v "^#" | xargs)
+```
 
+ターミナルで下記を実行してコンテナを立ち上げます。
 ```bash
 $ docker-compose up -d
 ```
@@ -24,8 +28,19 @@ this is my blog using Drupal and Docker Compose.
 This project is intended to be used on Docker container.
 
 ## Usage
-Exec the following command
+Copy and Edit the `.env`.
 
+```bash
+$ cp .env.example .env
+$ cp .env.docker.example .env.docker
+```
+
+Export variables declared in the `.env.docker`.
+```bash
+$ export $(cat .env.docker | grep -v "^#" | xargs)
+```
+
+Exec the following command.
 ```bash
 $ docker-compose up -d
 ```
