@@ -1,5 +1,5 @@
-# myblog
-Docker Composeを用いて構築したブログです。アプリケーションはDrupalを使用しています。
+# drupal-docker-nginx
+Docker Composeを用いたDrupalの開発環境です。  
 
 ## 構築手順
 `.env`を編集します。
@@ -19,28 +19,7 @@ $ export $(cat .env.docker | grep -v "^#" | xargs)
 $ docker-compose up -d
 ```
 
----
-## English:
-
-this is my blog using Drupal and Docker Compose.
-
-## Prerequisites
-This project is intended to be used on Docker container.
-
-## Usage
-Copy and Edit the `.env`.
-
+### Composerモジュールのインストール
 ```bash
-$ cp .env.example .env
-$ cp .env.docker.example .env.docker
-```
-
-Export variables declared in the `.env.docker`.
-```bash
-$ export $(cat .env.docker | grep -v "^#" | xargs)
-```
-
-Exec the following command.
-```bash
-$ docker-compose up -d
-```
+$ docker-compose exec php composer install
+```  
