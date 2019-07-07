@@ -29,8 +29,11 @@ RUN apt-get install -y git
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
-USER ${www_user}
-WORKDIR /home/${www_user}
+RUN chown -R $www_user:www-data /var/www/ \
+	&& chown www-data -R /var/run/ \
+	&& chown www-data -R /var/log/
+
+WORKDIR /var/www/app
 
 # install Nodejs
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -39,9 +42,3 @@ RUN export NVM_DIR=$HOME/.nvm && . $HOME/.nvm/nvm.sh \
 	&& nvm use $NODE_VERSION
 
 COPY ./.bashrc ~/.bashrc
-
-# php-fpm initialization
-USER root
-
-RUN mkdir -p /var/www/app/web/core/
-RUN chmod -R 755 /var/www/app/web/core/

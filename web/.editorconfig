@@ -11,6 +11,8 @@ indent_style = space
 indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
+
+[*.php]
 insert_final_newline = true
 
 [composer.{json,lock}]
