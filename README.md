@@ -1,25 +1,27 @@
 # drupal-docker-nginx
-Docker Composeを用いたDrupalの開発環境です。  
+This is the Docker Compose environment to develop Drupal.
 
-## 構築手順
-`.env`を編集します。
+## Requirements
+- Docker
+- Docker Compose
 
-```bash
-$ cp .env.example .env
-$ cp .env.docker.example .env.docker
+## How to use
+Copy and edit `.env`, `.env.docker`,
+```zsh
+% cp .env.example .env && cp .env.docker.example .env.docker
 ```
 
-事前に`.env.docker`を展開しておきます。
-```bash
-$ export $(cat .env.docker | grep -v "^#" | xargs)
+Export env vars,
+```zsh
+% export $(cat .env.docker | grep -v "^#" | xargs)
 ```
 
-ターミナルで下記を実行してコンテナを立ち上げます。
-```bash
-$ docker-compose up -d
+Then start the container.
+```zsh
+% docker-compose up -d
 ```
 
-### Composerモジュールのインストール
-```bash
-$ docker-compose exec php composer install
-```  
+Install Composer packages.
+```zsh
+% docker-compose exec php composer install
+```
